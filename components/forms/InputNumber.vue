@@ -16,6 +16,7 @@
       class="form-input"
       :class="{ 'is-invalid': v.$error }"
       v-money="price !== null ? money : null"
+      @blur="v.$touch()"
       autocomplete="off"
     />
     <div v-if="v.$error" class="form-field__errors">

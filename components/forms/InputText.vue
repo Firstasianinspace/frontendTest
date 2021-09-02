@@ -15,6 +15,7 @@
       :placeholder="placeholder"
       class="form-input"
       :class="{ 'is-invalid': v.$error }"
+      @blur="v.$touch()"
       autocomplete="off"
     />
     <div v-if="v.$error" class="form-field__errors">

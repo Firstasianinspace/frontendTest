@@ -92,9 +92,19 @@ export default {
         this.$store.dispatch('posts/addPost', this.cardObject)
           .then(() => {
             this.$store.commit('posts/SET_ACTIVE_OPTION', 'По умолчанию')
+            this.resetFields()
             event.target.reset()
           })
       }
+    },
+    resetFields () {
+      this.cardObject = Object.assign({
+        id: null,
+        name: null,
+        description: null,
+        imageLink: null,
+        price: null
+      })
     }
   }
 }

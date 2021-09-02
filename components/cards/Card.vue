@@ -1,5 +1,10 @@
 <template>
-  <div class="card">
+<transition>
+  <div
+  class="card"
+  @mouseenter="mouseEnter()"
+  @mouseleave="mouseLeave()"
+  >
     <VueLoadImage>
       <div
         slot="image"
@@ -7,11 +12,13 @@
         :style="{ backgroundImage: `url(${card.imageLink})` }"
         :data-src="card.imageLink"
       >
-        <div class="delete-icon__wrapper">
+      <transition name="fade" mode="out-in">
+        <div class="delete-icon__wrapper" v-if="cardHover">
           <CardDeleteIcon
           @click.native="removePost(card.id)"
           />
         </div>
+      </transition>
       </div>
       <Spinner slot="preloader"/>
       <div slot="error">Ошибка при загрузке изображения</div>
@@ -22,6 +29,7 @@
       <p class="card-text__price">{{ card.price | currency }}</p>
     </div>
   </div>
+</transition>
 </template>
 
 <script>
@@ -43,9 +51,20 @@ export default {
     Spinner,
     CardDeleteIcon
   },
+  data () {
+    return {
+      cardHover: false
+    }
+  },
   methods: {
     removePost (id) {
       this.$store.dispatch('posts/deletePost', id)
+    },
+    mouseEnter () {
+      this.cardHover = true
+    },
+    mouseLeave () {
+      this.cardHover = false
     }
   }
 }
@@ -56,5 +75,11 @@ export default {
   position: absolute;
   top: -8px;
   right: -8px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
