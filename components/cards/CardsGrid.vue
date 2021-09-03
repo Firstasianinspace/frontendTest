@@ -50,6 +50,7 @@ export default {
         return highToLow.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
       } else {
         const alphabet = [...this.posts]
+        console.log(alphabet.sort((a, b) => a.name.localeCompare(b.name)))
         return alphabet.sort((a, b) => a.name.localeCompare(b.name))
       }
     }

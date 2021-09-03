@@ -9,7 +9,7 @@ export const state = () => ({
   list: [
     {
       id: 1,
-      name: 'A Товар обычный',
+      name: 'А Товар обычный',
       description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
       price: '7500',
       imageLink: 'https://source.unsplash.com/random/500x500'
