@@ -1,9 +1,9 @@
 <template>
-<transition>
   <div
-  class="card"
-  @mouseenter="mouseEnter()"
-  @mouseleave="mouseLeave()"
+    ref="singleCard"
+    class="card"
+    @mouseenter="mouseEnter()"
+    @mouseleave="mouseLeave()"
   >
     <VueLoadImage>
       <div
@@ -16,7 +16,7 @@
         <div class="delete-icon__wrapper" v-if="cardHover">
           <CardDeleteIcon
           @click.native="removePost(card.id)"
-          />
+        />
         </div>
       </transition>
       </div>
@@ -29,7 +29,6 @@
       <p class="card-text__price">{{ card.price | currency }}</p>
     </div>
   </div>
-</transition>
 </template>
 
 <script>
@@ -57,8 +56,16 @@ export default {
     }
   },
   methods: {
+    // Not ideal
     removePost (id) {
-      this.$store.dispatch('posts/deletePost', id)
+      const singlePost = this.$refs.singleCard
+      this.$gsap.to(singlePost, {
+        opacity: 0,
+        duration: '1'
+      })
+      setTimeout(() => {
+        this.$store.dispatch('posts/deletePost', id)
+      }, 1000)
     },
     mouseEnter () {
       this.cardHover = true
@@ -66,16 +73,26 @@ export default {
     mouseLeave () {
       this.cardHover = false
     }
+    // Doesn't work
+    // enter (el) {
+    //   this.$gsap.to(el, {
+    //     opacity: 1,
+    //     duration: 1
+    //   })
+    //   console.log('enter')
+    // },
+    // leave (el) {
+    //   this.$gsap.to(el, {
+    //     opacity: 0,
+    //     duration: 1
+    //   })
+    //   console.log('leave')
+    // }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.delete-icon__wrapper {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }

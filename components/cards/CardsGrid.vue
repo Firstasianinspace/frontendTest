@@ -1,19 +1,19 @@
 <template>
-<div class="cards-grid__wrapper">
-  <transition-group name="flip-list" class="cards-grid" v-if="!loading" tag="div">
-    <Card
-    v-for="post in sortedPosts"
-    :key="post.id"
-    :card="post"
-    />
-  </transition-group>
-  <div class="cards-grid__loading" v-if="loading">
-    <CardLoading
-    v-for="post in sortedPosts"
-    :key="post.id"
-    />
+  <div class="cards-grid__wrapper">
+    <transition-group name="flip-list" class="cards-grid" v-if="!loading" tag="div">
+      <Card
+      v-for="post in sortedPosts"
+      :key="post.id"
+      :card="post"
+      />
+    </transition-group>
+    <div class="cards-grid__loading" v-if="loading">
+      <CardLoading
+      v-for="post in sortedPosts"
+      :key="post.id"
+      />
+    </div>
   </div>
-</div>
 </template>
 
 <script>

@@ -63,9 +63,11 @@ export const actions = {
       console.log(error)
     }
   },
-  deletePost (context, id) {
-    setTimeout(() => {
-      context.commit('DELETE_POST', id)
-    }, 100)
+  async deletePost (context, id) {
+    try {
+      await context.commit('DELETE_POST', id)
+    } catch (error) {
+      console.log(error)
+    }
   }
 }

@@ -198,13 +198,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.starOne {
-  fill: #005B9A;
-}
-.starTwo {
-  fill: #EF8ACB;
-}
-.starThree {
-  fill: #00C480;
-}
 </style>

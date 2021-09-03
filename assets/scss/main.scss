@@ -146,6 +146,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 15px;
   background: #7BAE73;
   color: #fff;
+  cursor: pointer;
   &:disabled {
     color: #B4B4B4;
     background: #EEEEEE;
@@ -193,4 +194,19 @@ h1, h2, h3, h4, h5, h6 {
       line-height: 30px;
     }
   }
+}
+// Delete icon
+.delete-icon__wrapper {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+}
+.starOne {
+  fill: #005B9A;
+}
+.starTwo {
+  fill: #EF8ACB;
+}
+.starThree {
+  fill: #00C480;
 }
