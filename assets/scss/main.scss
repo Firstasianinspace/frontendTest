@@ -1,5 +1,12 @@
 @import url(./fonts.scss);
-@import url(./vars.scss);
+
+
+$red: #FF8484;
+$blue: #1771D8;
+$green: #7BAE73;
+$default: #3F3F3F;
+$darkgray: #49485E;
+$lightgray: #FBFEFF;
 
 * {
   margin: 0;
@@ -39,6 +46,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 0;
   font-weight: 600;
+  color: $default;
 }
 
 .container {
@@ -51,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sidebar-layout {
-  background: rgba(255, 254, 251, 0.8);
+  background: $lightgray;
   &__grid {
     padding: 0 32px;
     display: grid;
@@ -68,8 +76,6 @@ h1, h2, h3, h4, h5, h6 {
 .sidebar-layout__content {
   grid-column: 5 / 17;
 }
-
-
 
 /*
 ** Form styles
@@ -93,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 8px;
     line-height: 10px;
     letter-spacing: -0.02em;
-    color: #FF8484;
+    color: $red;
   }
 }
 
@@ -101,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 0 4px 0;
   font-size: 10px;
   letter-spacing: -0.02em;
-  color: #49485E;
+  color: $darkgray;
   width: fit-content;
   position: relative;
   &__required {
@@ -111,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 4px;
     width: 4px;
     border-radius: 100%;
-    background: #FF8484;
+    background: $red;
   }
 }
 
@@ -129,11 +135,11 @@ h1, h2, h3, h4, h5, h6 {
     color: #B4B4B4;
   }
   &:focus {
-    border: 1px solid #1771D8;
+    border: 1px solid $blue;
   }
 }
 .is-invalid {
-  border: 1px solid #FF8484;
+  border: 1px solid $red;
 }
 
 .button-submit {
@@ -150,6 +156,7 @@ h1, h2, h3, h4, h5, h6 {
   &:disabled {
     color: #B4B4B4;
     background: #EEEEEE;
+    cursor: not-allowed;
   }
 }
 
@@ -182,16 +189,19 @@ h1, h2, h3, h4, h5, h6 {
     &__title {
       font-size: 20px;
       line-height: 25px;
+      color: $default;
     }
     &__desc {
       padding: 16px 0 32px 0;
       font-size: 16px;
       line-height: 20px;
+      color: $default;
     }
     &__price {
       font-weight: 600;
       font-size: 24px;
       line-height: 30px;
+      color: $default;
     }
   }
 }

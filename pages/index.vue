@@ -14,7 +14,7 @@ export default {
     CardsGrid
   },
   mounted () {
-    localStorage.removeItem('vuex')
+    this.$store.dispatch('posts/getPosts')
   }
 }
 </script>

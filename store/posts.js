@@ -6,36 +6,7 @@ export const state = () => ({
     'Сначала дешевле',
     'По алфавиту'
   ],
-  list: [
-    {
-      id: 1,
-      name: 'А Товар обычный',
-      description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
-      price: '7500',
-      imageLink: 'https://source.unsplash.com/random/500x500'
-    },
-    {
-      id: 2,
-      name: 'Я Необычный товар',
-      description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
-      price: '4300',
-      imageLink: 'https://source.unsplash.com/random/500x500'
-    },
-    {
-      id: 3,
-      name: 'Это Простой товар',
-      description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
-      price: '11000',
-      imageLink: 'https://source.unsplash.com/random/500x500'
-    },
-    {
-      id: 4,
-      name: 'Мы Хорошие товары',
-      description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
-      price: '10000',
-      imageLink: 'https://source.unsplash.com/random/500x500'
-    }
-  ]
+  list: []
 })
 
 export const getters = {
@@ -43,6 +14,9 @@ export const getters = {
 }
 
 export const mutations = {
+  SET_POSTS (state, list) {
+    state.list = list
+  },
   ADD_POST (state, post) {
     state.list.unshift(post)
   },
@@ -56,6 +30,12 @@ export const mutations = {
 }
 
 export const actions = {
+  async getPosts ({ commit }) {
+    await this.$axios.get('https://api.jsonbin.io/b/613252803b222b1d0d95e29f/2')
+      .then((response) => {
+        commit('SET_POSTS', response.data.posts)
+      })
+  },
   async addPost (context, post) {
     try {
       await context.commit('ADD_POST', post)
