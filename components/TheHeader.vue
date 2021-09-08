@@ -25,6 +25,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  & h1 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 35px;
+  }
   &-option {
     min-width: 175px;
   }

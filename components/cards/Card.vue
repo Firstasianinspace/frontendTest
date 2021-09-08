@@ -13,16 +13,16 @@
         :data-src="card.imageLink"
       >
       <transition name="fade" mode="out-in">
-        <div class="delete-icon__wrapper" v-if="cardHover">
-          <CardDeleteIcon
-          @click.native="removePost(card.id)"
-        />
-        </div>
       </transition>
       </div>
       <Spinner slot="preloader"/>
-      <div slot="error">Ошибка при загрузке изображения</div>
+      <div slot="error" class="error-image">Ошибка при загрузке изображения</div>
     </VueLoadImage>
+        <div class="delete-icon__wrapper" v-if="cardHover">
+      <CardDeleteIcon
+        @click.native="removePost(card.id)"
+      />
+    </div>
     <div class="card-text">
       <h4 class="card-text__title">{{card.name}}</h4>
       <p class="card-text__desc">{{ card.description }}</p>
@@ -98,5 +98,11 @@ export default {
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+.error-image {
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
